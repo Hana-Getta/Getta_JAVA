@@ -1,4 +1,6 @@
 [
-  {"userName":"홍길동","type":"Python","cpm":141.30,"accuracy":100.00},
-  {"userName":"홍길동","type":"JavaScript","cpm":111.34,"accuracy":58.82}
+  {"userName":"홍길동","type":"JavaScript","cpm":144.37,"accuracy":100.00},
+  {"userName":"홍길동","type":"Python","cpm":170.75,"accuracy":100.00},
+  {"userName":"홍길동","type":"JAVA","cpm":188.25,"accuracy":100.00},
+  {"userName":"홍길동","type":"HTML","cpm":84.58,"accuracy":72.73}
 ]

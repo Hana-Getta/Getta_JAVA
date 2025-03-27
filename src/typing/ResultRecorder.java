@@ -1,11 +1,6 @@
 package typing;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +19,8 @@ public class ResultRecorder {
         double cpm = result.getCpm();
         double accuracy = result.getAccuracy();
 
-        String newRecord = String.format("{\"type\":\"%s\",\"userName\":\"%s\",\"cpm\":%.2f,\"accuracy\":%.2f}",
-            type, userName, cpm, accuracy);
+        String newRecord = String.format("{\"userName\":\"%s\",\"type\":\"%s\",\"cpm\":%.2f,\"accuracy\":%.2f}",
+            userName, type, cpm, accuracy);
 
         List<String> records = new ArrayList<>();
 
@@ -33,11 +28,22 @@ public class ResultRecorder {
         File file = new File(FILE_NAME);
         if (file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                StringBuilder jsonBuilder = new StringBuilder();
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    line = line.trim();
-                    if (!line.isEmpty()) {
-                        records.add(line);
+                    jsonBuilder.append(line.trim());
+                }
+                String json = jsonBuilder.toString();
+                if (json.startsWith("[") && json.endsWith("]")) {
+                    json = json.substring(1, json.length() - 1).trim();
+                    if (!json.isEmpty()) {
+                        String[] items = json.split("\\},\\s*\\{");
+                        for (String item : items) {
+                            if (!item.startsWith("{")) item = "{" + item;
+                            if (!item.endsWith("}")) item = item + "}";
+                            records.add(item.trim());
+                        }
+
                     }
                 }
             } catch (IOException e) {
