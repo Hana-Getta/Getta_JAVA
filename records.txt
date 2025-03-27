@@ -1,0 +1,5 @@
+[
+  {"userName":"null","type":"HTML","cpm":169.56,"accuracy":38.79},
+  {"userName":"null","type":"JavaScript","cpm":691.56,"accuracy":15.96},
+  {"userName":"박현서","type":"HTML","cpm":4742.18,"accuracy":0.00}
+]
