@@ -2,16 +2,18 @@ import java.util.Scanner;
 import typing.*;
 
 public class 실행 {
-    public static final String USER_NAME = "홍길동";
+    public static String USER_NAME;
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         TypingPractice practice = new TypingPractice(USER_NAME);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("👉 이름을 입력하세요: ");
+        USER_NAME = scanner.next();
 
         while (true) {
             printMenu();
-            System.out.print("👉 원하는 번호를 선택하세요: ");
+            System.out.print("👉 원하는 메뉴를 선택하세요: ");
             int choice = getUserChoice(scanner);
             switch (choice) {
                 case 1-> {
@@ -45,7 +47,7 @@ public class 실행 {
         System.out.println("  1️⃣  Typing");
         System.out.println("  2️⃣  Game");
         System.out.println("  3️⃣  Record");
-        System.out.println("  0️⃣  Exit");
+        System.out.println("  4️⃣  Exit");
         System.out.println("===================================");
     }
 
@@ -69,5 +71,4 @@ public class 실행 {
         }
         return choice;
     }
-
 }
