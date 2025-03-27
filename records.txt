@@ -1,4 +1,22 @@
 [
-  {"userName":"홍길동","type":"Python","cpm":141.30,"accuracy":100.00},
-  {"userName":"홍길동","type":"JavaScript","cpm":111.34,"accuracy":58.82}
+  [,
+  [,,
+  [,,,
+  [,,,,
+  [,,,,,
+  [,,,,,,
+  {"userName":"홍길동","type":"Python","cpm":141.30,"accuracy":100.00},,,,,,,
+  {"userName":"홍길동","type":"JavaScript","cpm":111.34,"accuracy":58.82},,,,,,
+  ],,,,,,
+  {"type":"JavaScript","userName":"홍길동","cpm":141.12,"accuracy":100.00},,,,,
+  ],,,,,
+  {"type":"JavaScript","userName":"홍길동","cpm":187.05,"accuracy":100.00},,,,
+  ],,,,
+  {"type":"JavaScript","userName":"홍길동","cpm":171.28,"accuracy":100.00},,,
+  ],,,
+  {"type":"Python","userName":"홍길동","cpm":163.73,"accuracy":100.00},,
+  ],,
+  {"type":"JAVA","userName":"홍길동","cpm":83.24,"accuracy":100.00},
+  ],
+  {"type":"HTML","userName":"홍길동","cpm":152.35,"accuracy":100.00}
 ]
