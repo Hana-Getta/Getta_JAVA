@@ -16,13 +16,15 @@ public class SubinGame extends JFrame {
             "x||y", "n:=10", "x!=y", "a!==b", "x<=y", "x>=y", "val??0", "obj?.key",
             "\"\\n\"", "\"\\t\"", "r\"\\w+\"", "/abc/", "x^y", "r\"end$\"", "$(VAR)", "<%=id%>"
     };
-    private Vector<String> v = new Vector<String>(Arrays.asList(words)); // 직접 배열로부터 Vector 생성
+    private Vector<String> v = new Vector<String>(Arrays.asList(words));
 
-    public SubinGame() { // 생성자 이름을 SubinGame으로 수정
-        setTitle("떨어지는 단어 맞추기");
+    public SubinGame() {
+        setTitle("산성비 게임");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setLocation(880, 420);
+        setExtendedState(JFrame.MAXIMIZED_BOTH); // 창을 화면 크기에 맞게 최대화
+        setLocationRelativeTo(null); // 화면 중앙에 위치하도록 설정
+
         Container c = getContentPane();
         c.setLayout(new BorderLayout());
 
