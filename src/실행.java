@@ -18,7 +18,7 @@ public class 실행 {
             switch (choice) {
                 case 1-> {
                     System.out.println("📝 Typing 모드로 이동합니다...");
-                    practice.run();
+                    practice.run(USER_NAME);
                 }
                 case 2-> {
                     System.out.println("🎮 Game 모드로 이동합니다...");
