@@ -1,0 +1,5 @@
+console.log("Hello, JavaScript!");
+alert("This is an alert message!");
+document.body.style.backgroundColor = "lightblue";
+let randomNum = Math.floor(Math.random() * 100);
+const today = new Date().toLocaleDateString();

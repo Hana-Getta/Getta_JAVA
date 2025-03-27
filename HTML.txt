@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>My Web Page</title></head>
+<a href="https://example.com">Click Here</a>
+<button onclick="alert('Hello!')">Click Me</button>
+<input type="text" placeholder="Enter your name">
