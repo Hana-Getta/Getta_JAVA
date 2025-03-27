@@ -24,8 +24,8 @@ public class ResultRecorder {
         double cpm = result.getCpm();
         double accuracy = result.getAccuracy();
 
-        String newRecord = String.format("{\"userName\":\"%s\",\"type\":\"%s\",\"cpm\":%.2f,\"accuracy\":%.2f}",
-            userName, type, cpm, accuracy);
+        String newRecord = String.format("{\"type\":\"%s\",\"userName\":\"%s\",\"cpm\":%.2f,\"accuracy\":%.2f}",
+            type, userName, cpm, accuracy);
 
         List<String> records = new ArrayList<>();
 
