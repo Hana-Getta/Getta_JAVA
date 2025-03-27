@@ -2,5 +2,7 @@
   {"userName":"홍길동","type":"JavaScript","cpm":144.37,"accuracy":100.00},
   {"userName":"홍길동","type":"Python","cpm":170.75,"accuracy":100.00},
   {"userName":"홍길동","type":"JAVA","cpm":188.25,"accuracy":100.00},
-  {"userName":"홍길동","type":"HTML","cpm":84.58,"accuracy":72.73}
+  {"userName":"홍길동","type":"HTML","cpm":84.58,"accuracy":72.73},
+  {"userName":"홍길동","type":"Python","cpm":173.71,"accuracy":97.08},
+  {"userName":"홍길동","type":"JavaScript","cpm":474.48,"accuracy":18.31}
 ]
