@@ -59,6 +59,13 @@ public class SubinGame extends JFrame {
         c.add(panel, BorderLayout.CENTER);
 
         setVisible(true);
+
+        //처음 시작하고 바로 단어 떨어질 수 있게 수정
+        SwingUtilities.invokeLater(() -> {
+            panel.addNewWord();
+            revalidate();
+            repaint();
+        });
     }
 
     class MyPanel extends JPanel implements Runnable {
@@ -105,7 +112,6 @@ public class SubinGame extends JFrame {
                         lastTime = currentTime; // 시간 갱신
                     }
 
-                    // Iterator 사용하여 리스트 안전하게 순회 및 제거
                     Iterator<JLabel> iterator = labels.iterator();
                     while (iterator.hasNext()) {
                         JLabel label = iterator.next();
@@ -133,7 +139,7 @@ public class SubinGame extends JFrame {
             newLabel.setText(v.get((int) (Math.random() * v.size()))); // 랜덤 단어 선택
             newLabel.setFont(new Font("Serif", Font.BOLD, 35));
             newLabel.setSize(400, 50);
-            newLabel.setForeground(Color.magenta);
+            newLabel.setForeground(Color.decode("#cccccc"));
             newLabel.setLocation((int) (Math.random() * getWidth() / 2), 0); // 랜덤 위치
             labels.add(newLabel); // 리스트에 추가
             add(newLabel); // 패널에 추가
