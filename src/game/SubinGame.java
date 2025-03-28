@@ -19,6 +19,9 @@ public class SubinGame extends JFrame {
     };
     private final Vector<String> v = new Vector<>(Arrays.asList(words));
 
+    private int score = 0; // 초기 점수 설정
+    private JLabel timeAndScoreLabel; // 시간과 점수를 보여주는 레이블
+
     public SubinGame() {
         setTitle("산성비 게임");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,25 +37,49 @@ public class SubinGame extends JFrame {
         jt.setPreferredSize(new Dimension(300, 50));
         jt.setFont(new Font("Serif", Font.BOLD, 24));
         jt.addActionListener(new MyActionListener());
+
+        // 상단에 점수와 시간을 표시하는 레이블 추가
+        JPanel topPanel = new JPanel(new BorderLayout());
+        topPanel.setBackground(Color.decode("#222222"));
+
+        timeAndScoreLabel = new JLabel("남은 시간: 60초  |  점수: 0", JLabel.CENTER);
+        timeAndScoreLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        timeAndScoreLabel.setForeground(Color.white);
+        topPanel.add(timeAndScoreLabel, BorderLayout.CENTER);
+
+        c.add(topPanel, BorderLayout.NORTH); // 상단 패널을 북쪽에 추가
+
         jp = new JPanel();
         Border topBorder = BorderFactory.createMatteBorder(2, 0, 0, 0, Color.decode("#cccccc"));
         jp.setBorder(BorderFactory.createCompoundBorder(topBorder, BorderFactory.createEmptyBorder(10, 0, 20, 0)));
         jp.setBackground(Color.decode("#222222"));
         jp.add(jt);
+
         c.add(jp, BorderLayout.SOUTH);
         c.add(panel, BorderLayout.CENTER);
 
         setVisible(true);
+
+        //처음 시작하고 바로 단어 떨어질 수 있게 수정
+        SwingUtilities.invokeLater(() -> {
+            panel.addNewWord();
+            revalidate();
+            repaint();
+        });
     }
 
     class MyPanel extends JPanel implements Runnable {
         private long lastTime = System.currentTimeMillis(); // 마지막으로 단어를 변경한 시간
+        private final long timeLimit = 60000; // 게임 시간 60초
+        private long startTime;
         private int wordInterval = 5000; // 5초 간격 (5000ms)
         private List<JLabel> labels = new ArrayList<>(); // 떨어지는 단어들을 관리할 리스트
 
         public MyPanel() {
             setLayout(null);
             setBackground(Color.decode("#222222"));
+
+            startTime = System.currentTimeMillis();
 
             Thread th = new Thread(this);
             th.start();
@@ -62,20 +89,38 @@ public class SubinGame extends JFrame {
             while (true) {
                 try {
                     long currentTime = System.currentTimeMillis();
+                    long elapsedTime = currentTime - startTime; // 경과 시간 계산
+
+                    // 게임 시간이 60초를 넘었으면 종료
+                    if (elapsedTime >= timeLimit) {
+                        JOptionPane.showMessageDialog(SubinGame.this, "게임 시간이 종료되었습니다.");
+                        System.exit(0); // 게임 종료
+                    }
+
+                    // 남은 시간 계산
+                    long remainingTime = timeLimit - elapsedTime;
+                    long remainingSeconds = remainingTime / 1000; // 남은 초
+
+                    // 남은 시간과 점수 텍스트 갱신
+                    if (timeAndScoreLabel != null) {
+                        timeAndScoreLabel.setText("남은 시간: " + remainingSeconds + "초 | 점수: " + score);
+                    }
+
                     // 5초마다 새로운 단어 추가
                     if (currentTime - lastTime >= wordInterval) {
                         addNewWord(); // 새로운 단어 추가
                         lastTime = currentTime; // 시간 갱신
                     }
 
-                    // 모든 단어가 떨어지도록 위치 업데이트
-                    for (JLabel label : labels) {
+                    Iterator<JLabel> iterator = labels.iterator();
+                    while (iterator.hasNext()) {
+                        JLabel label = iterator.next();
                         Point p = label.getLocation();
                         label.setLocation(p.x, p.y + 10); // 단어 이동
 
                         // 단어가 화면 밖으로 나가면 리스트에서 제거
                         if (p.y > getHeight() - 15) {
-                            labels.remove(label);
+                            iterator.remove(); // 안전하게 제거
                             remove(label);
                         }
                     }
@@ -94,7 +139,7 @@ public class SubinGame extends JFrame {
             newLabel.setText(v.get((int) (Math.random() * v.size()))); // 랜덤 단어 선택
             newLabel.setFont(new Font("Serif", Font.BOLD, 35));
             newLabel.setSize(400, 50);
-            newLabel.setForeground(Color.magenta);
+            newLabel.setForeground(Color.decode("#cccccc"));
             newLabel.setLocation((int) (Math.random() * getWidth() / 2), 0); // 랜덤 위치
             labels.add(newLabel); // 리스트에 추가
             add(newLabel); // 패널에 추가
@@ -103,21 +148,33 @@ public class SubinGame extends JFrame {
 
     class MyActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            String inputText = jt.getText().trim(); // 사용자 입력 텍스트에서 공백 제거
+
+            // 입력된 텍스트와 레이블의 텍스트가 일치하는지 비교
+            JLabel matchedLabel = null;
+            int maxY = Integer.MIN_VALUE; // 가장 밑에 있는 단어의 y 좌표를 찾기 위한 변수
+
             for (JLabel label : panel.labels) {
-                if (jt.getText().equals(label.getText())) {
-                    label.setText(v.get((int) (Math.random() * v.size()))); // 새로운 단어로 변경
-                    label.setLocation((int) (Math.random() * panel.getWidth() / 2), 0); // 랜덤 위치
+                if (inputText.equals(label.getText()) && label.getLocation().y > maxY) {
+                    // y 좌표가 가장 큰 레이블을 찾음
+                    matchedLabel = label;
+                    maxY = label.getLocation().y;
                 }
             }
 
-            if (jt.getText().equals("그만")) {
-                System.exit(0); // 게임 종료
+            // 일치하는 단어가 있으면
+            if (matchedLabel != null) {
+                matchedLabel.setText(v.get((int) (Math.random() * v.size()))); // 새로운 단어로 변경
+                matchedLabel.setLocation((int) (Math.random() * panel.getWidth() / 2), 0); // 새로운 랜덤 위치로 설정
+
+                // 맞춘 단어가 있으면 점수 10점 추가
+                score += 10;
             }
+
 
             jt.setText(""); // 입력 필드 초기화
         }
     }
-
     public static void main(String[] args) {
         new SubinGame(); // SubinGame 생성
     }
