@@ -8,13 +8,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-public class records {
+public class Records {
     ArrayList<typingRecord> javascriptRecords = new ArrayList<>();
     ArrayList<typingRecord> pythonRecords = new ArrayList<>();
     ArrayList<typingRecord> javaRecords = new ArrayList<>();
     ArrayList<typingRecord> htmlRecords = new ArrayList<>();
 
-    public void loadRecordsFromJson(String filePath) {
+    public void loadAndShowRecords(String filePath) {
+        loadRecordsFromJson(filePath);
+        showRecords();
+    }
+
+    private void loadRecordsFromJson(String filePath) {
         try {
             if (!Files.exists(Paths.get(filePath))) {
                 System.out.println("파일이 존재하지 않습니다: " + filePath);
@@ -61,7 +66,7 @@ public class records {
         }
     }
 
-    public void showRecords() {
+    private void showRecords() {
         Comparator<typingRecord> comparator = (r1, r2) -> {
             double score1 = r1.getCpm() * 0.1 + Double.parseDouble(r1.getAccuracy().replace("%", ""));
             double score2 = r2.getCpm() * 0.1 + Double.parseDouble(r2.getAccuracy().replace("%", ""));

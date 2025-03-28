@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import game.Game;
+import records.Records;
 import typing.*;
 
 public class 실행 {
@@ -18,12 +19,12 @@ public class 실행 {
             System.out.print("👉 원하는 메뉴를 선택하세요: ");
             int choice = getUserChoice(scanner);
             switch (choice) {
-                case 1-> {
+                case 1 -> {
                     TypingPractice practice = new TypingPractice(USER_NAME);
                     System.out.println("📝 Typing 모드로 이동합니다...");
                     practice.run(USER_NAME);
                 }
-                case 2-> {
+                case 2 -> {
                     System.out.println("🎮 Game 모드로 이동합니다...");
                     Game game = new Game(USER_NAME);
                     // 게임이 끝날 때까지 대기
@@ -37,20 +38,22 @@ public class 실행 {
                 }
                 case 3 -> {
                     System.out.println("📜 Record 화면으로 이동합니다...");
-//                    viewRecord();
-                    break;
+                    Records records = new Records();
+                    records.loadAndShowRecords("records.txt");
                 }
                 case 4 -> {
                     System.out.println("👋 게임을 종료합니다. 감사합니다!");
                     scanner.close();
+                    return;
                 }
                 default -> {
                     System.out.println("❌ 잘못된 입력입니다. 다시 선택해주세요. ❌");
                 }
-                }
-            System.out.println(); // 줄 바꿈
+            }
+            System.out.println();
         }
     }
+
     private static void printMenu() {
         System.out.println("===================================");
         System.out.println("        🎮 MENU 🎮");
@@ -70,10 +73,10 @@ public class 실행 {
         while (true) {
             if (scanner.hasNextInt()) {
                 choice = scanner.nextInt();
-                if (choice >= 0 && choice <= 3) {
+                if (choice >= 1 && choice <= 4) {
                     break; // 유효한 입력이면 반복 종료
                 } else {
-                    System.out.println("❌ 선택한 번호는 유효하지 않습니다. 0 ~ 3 사이의 숫자를 입력해주세요.");
+                    System.out.println("❌ 선택한 번호는 유효하지 않습니다.");
                 }
             } else {
                 System.out.println("❌ 잘못된 입력입니다. 숫자만 입력 가능합니다.");
