@@ -8,7 +8,7 @@ import java.io.*;
 import java.util.*;
 import java.util.List;
 
-public class SubinGame extends JFrame {
+public class Game extends JFrame {
     private final String user_name;
 
     private MyPanel panel = new MyPanel();
@@ -25,7 +25,7 @@ public class SubinGame extends JFrame {
     private int score = 0; // 초기 점수 설정
     private JLabel timeAndScoreLabel; // 시간과 점수를 보여주는 레이블
 
-    public SubinGame(String name) {
+    public Game(String name) {
         this.user_name = name;
 
         setTitle("산성비 게임");
@@ -99,9 +99,9 @@ public class SubinGame extends JFrame {
                     // 게임 시간이 30초를 넘었으면 종료
                     if (elapsedTime >= timeLimit) {
                         saveGameRecord();
-                        JOptionPane.showMessageDialog(SubinGame.this, "게임 시간이 종료되었습니다.");
-                        synchronized (SubinGame.this) {
-                            SubinGame.this.notify();
+                        JOptionPane.showMessageDialog(Game.this, "게임 시간이 종료되었습니다.");
+                        synchronized (Game.this) {
+                            Game.this.notify();
                         }
 
                         dispose();

@@ -1,5 +1,8 @@
 [
   {"userName":"null","type":"HTML","cpm":169.56,"accuracy":38.79},
   {"userName":"null","type":"JavaScript","cpm":691.56,"accuracy":15.96},
-  {"userName":"박현서","type":"HTML","cpm":4742.18,"accuracy":0.00}
+  {"userName":"박현서","type":"HTML","cpm":4742.18,"accuracy":0.00},
+  {"userName":"박현서","type":"JavaScript","cpm":325.68,"accuracy":55.40},
+  {"userName":"박현서","type":"Python","cpm":574.04,"accuracy":27.21},
+  {"userName":"박현서","type":"HTML","cpm":2741.94,"accuracy":0.00}
 ]
