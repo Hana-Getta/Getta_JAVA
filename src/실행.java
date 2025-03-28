@@ -1,10 +1,14 @@
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.Scanner;
+
+import game.SubinGame;
 import typing.*;
 
 public class 실행 {
     public static String USER_NAME;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         TypingPractice practice = new TypingPractice(USER_NAME);
 
         Scanner scanner = new Scanner(System.in);
@@ -22,7 +26,16 @@ public class 실행 {
                 }
                 case 2-> {
                     System.out.println("🎮 Game 모드로 이동합니다...");
-//                    startGame();
+                    SubinGame game = new SubinGame(USER_NAME);
+
+                    // 게임이 끝날 때까지 대기
+                    synchronized (game) {
+                        try {
+                            game.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 case 3 -> {
                     System.out.println("📜 Record 화면으로 이동합니다...");
