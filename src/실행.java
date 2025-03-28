@@ -1,8 +1,7 @@
 import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.Scanner;
 
-import game.SubinGame;
+import game.Game;
 import typing.*;
 
 public class 실행 {
@@ -26,7 +25,7 @@ public class 실행 {
                 }
                 case 2-> {
                     System.out.println("🎮 Game 모드로 이동합니다...");
-                    SubinGame game = new SubinGame(USER_NAME);
+                    Game game = new Game(USER_NAME);
 
                     // 게임이 끝날 때까지 대기
                     synchronized (game) {
