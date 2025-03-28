@@ -40,7 +40,7 @@ public class Game extends JFrame {
 
         jt = new JTextField();
         jt.setPreferredSize(new Dimension(300, 50));
-        jt.setFont(new Font("Serif", Font.BOLD, 24));
+        jt.setFont(new Font("SansSerif", Font.BOLD, 23));
         jt.addActionListener(new MyActionListener());
 
         // 상단에 점수와 시간을 표시하는 레이블 추가
@@ -48,7 +48,7 @@ public class Game extends JFrame {
         topPanel.setBackground(Color.decode("#222222"));
 
         timeAndScoreLabel = new JLabel("남은 시간: 60초  |  점수: 0", JLabel.CENTER);
-        timeAndScoreLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        timeAndScoreLabel.setFont(new Font("SansSerif", Font.BOLD, 24));
         timeAndScoreLabel.setForeground(Color.white);
         topPanel.add(timeAndScoreLabel, BorderLayout.CENTER);
 
@@ -148,7 +148,7 @@ public class Game extends JFrame {
         private void addNewWord() {
             JLabel newLabel = new JLabel();
             newLabel.setText(v.get((int) (Math.random() * v.size()))); // 랜덤 단어 선택
-            newLabel.setFont(new Font("Serif", Font.BOLD, 35));
+            newLabel.setFont(new Font("SansSerif", Font.BOLD, 23));
             newLabel.setSize(400, 50);
             newLabel.setForeground(Color.decode("#cccccc"));
             newLabel.setLocation((int) (Math.random() * getWidth() / 2), 0); // 랜덤 위치
