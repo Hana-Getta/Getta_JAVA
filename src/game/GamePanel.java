@@ -105,7 +105,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void addNewWord() {
         JLabel newLabel = new JLabel();
         newLabel.setText(v.get(new Random().nextInt(v.size())));
-        newLabel.setFont(new Font("SansSerif", Font.BOLD, 35));
+        newLabel.setFont(new Font("SansSerif", Font.BOLD, 23));
         newLabel.setSize(400, 50);
         newLabel.setForeground(Color.decode("#cccccc"));
         newLabel.setLocation(new Random().nextInt(getWidth() / 2), 0);

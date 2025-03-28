@@ -37,7 +37,7 @@ public class Game extends JFrame {
 
         jt = new JTextField();
         jt.setPreferredSize(new Dimension(300, 50));
-        jt.setFont(new Font("SansSerif", Font.BOLD, 23));
+        jt.setFont(new Font("SansSerif", Font.BOLD, 20));
         jt.addActionListener(new GameActionListener(panel, jt,this));
 
         JPanel jp = new JPanel();
