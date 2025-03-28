@@ -11,6 +11,7 @@ public class GamePanel extends JPanel implements Runnable {
     private long lastTime = System.currentTimeMillis();
     private final long timeLimit = 30000;
     private long startTime;
+    private long elapsedTime;
     private int wordInterval = 5000;
     private List<JLabel> labels = new ArrayList<>();
     private final String[] words = {
@@ -38,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
         while (true) {
             try {
                 long currentTime = System.currentTimeMillis();
-                long elapsedTime = currentTime - startTime;
+                elapsedTime = currentTime - startTime;
 
                 if (elapsedTime >= timeLimit) {
                     saveGameRecord(game.getUserName(), game.getScore());
@@ -93,10 +94,18 @@ public class GamePanel extends JPanel implements Runnable {
         return v.get(new Random().nextInt(v.size()));
     }
 
+    public long  getTimeLimit() {
+        return timeLimit;
+    }
+
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
+
     public void addNewWord() {
         JLabel newLabel = new JLabel();
         newLabel.setText(v.get(new Random().nextInt(v.size())));
-        newLabel.setFont(new Font("Serif", Font.BOLD, 35));
+        newLabel.setFont(new Font("SansSerif", Font.BOLD, 23));
         newLabel.setSize(400, 50);
         newLabel.setForeground(Color.decode("#cccccc"));
         newLabel.setLocation(new Random().nextInt(getWidth() / 2), 0);

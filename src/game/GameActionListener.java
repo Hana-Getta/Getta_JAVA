@@ -31,7 +31,7 @@ public class GameActionListener implements ActionListener {
             matchedLabel.setText(panel.getRandomWord()); // 새로운 단어로 변경
             matchedLabel.setLocation((int) (Math.random() * panel.getWidth() / 2), 0); // 새로운 랜덤 위치로 설정
 
-            game.updateScoreAndTime(game.getScore() + 10, 0);
+            game.updateScoreAndTime(game.getScore() + 10, ((int)(panel.getTimeLimit()-panel.getElapsedTime())/1000));
 
             /*
             // 일치하는 단어를 화면에서 제거

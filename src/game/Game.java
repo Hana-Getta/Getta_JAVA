@@ -27,7 +27,7 @@ public class Game extends JFrame {
         topPanel.setBackground(Color.decode("#222222"));
 
         timeAndScoreLabel = new JLabel("남은 시간: 30초  |  점수: 0", JLabel.CENTER);
-        timeAndScoreLabel.setFont(new Font("Serif", Font.BOLD, 24));
+        timeAndScoreLabel.setFont(new Font("SansSerif", Font.BOLD, 23));
         timeAndScoreLabel.setForeground(Color.white);
         topPanel.add(timeAndScoreLabel, BorderLayout.CENTER);
 
@@ -37,7 +37,7 @@ public class Game extends JFrame {
 
         jt = new JTextField();
         jt.setPreferredSize(new Dimension(300, 50));
-        jt.setFont(new Font("Serif", Font.BOLD, 24));
+        jt.setFont(new Font("SansSerif", Font.BOLD, 20));
         jt.addActionListener(new GameActionListener(panel, jt,this));
 
         JPanel jp = new JPanel();
