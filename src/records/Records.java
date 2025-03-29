@@ -51,7 +51,7 @@ public class Records {
                     case "Python":
                         pythonRecords.add(typingRecord);
                         break;
-                    case "Java":
+                    case "JAVA":
                         javaRecords.add(typingRecord);
                         break;
                     case "HTML":
@@ -59,8 +59,6 @@ public class Records {
                         break;
                 }
             }
-
-            System.out.println("JSON 데이터를 성공적으로 로드했습니다.");
         } catch (IOException e) {
             System.out.println("파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
         }
@@ -85,16 +83,29 @@ public class Records {
     }
 
     private void printTopRecords(String language, ArrayList<typingRecord> records) {
+        System.out.println("═══════════════════════════════════════════");
+
         System.out.println("[" + language + "]");
-        System.out.println("=====================================");
         if (records.size() == 0) {
             System.out.println("아직 기록이 없습니다.");
         } else {
             for (int i = 0; i < Math.min(records.size(), 5); i++) {
                 typingRecord r = records.get(i);
-                System.out.println("Name: " + r.getName() + " | cpm: " + r.getCpm() + " | Accuracy: " + r.getAccuracy());
+
+                System.out.printf("👤 Name: %-6s 🏆 CPM: %d\n", r.getName(), r.getCpm());
+                String[] accuracy = r.getAccuracy().split("\\.");
+                int intAccuracy = Integer.parseInt(accuracy[0]) / 10;
+
+                System.out.print("🎯 Accuracy: [");
+                for (int j = 0; j < 10; j++) {
+                    System.out.print(j < intAccuracy ? "█" : "░");
+                }
+                System.out.printf("] %s\n", r.getAccuracy());
+
+                if (i < Math.min(records.size(), 5) - 1) {
+                    System.out.print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+                }
             }
         }
-        System.out.println("=====================================");
     }
 }
