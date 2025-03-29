@@ -51,7 +51,7 @@ public class Records {
                     case "Python":
                         pythonRecords.add(typingRecord);
                         break;
-                    case "Java":
+                    case "JAVA":
                         javaRecords.add(typingRecord);
                         break;
                     case "HTML":
@@ -83,7 +83,7 @@ public class Records {
     }
 
     private void printTopRecords(String language, ArrayList<typingRecord> records) {
-        System.out.println("-------------------------------------------");
+        System.out.println("═══════════════════════════════════════════");
 
         System.out.println("[" + language + "]");
         if (records.size() == 0) {
@@ -91,7 +91,20 @@ public class Records {
         } else {
             for (int i = 0; i < Math.min(records.size(), 5); i++) {
                 typingRecord r = records.get(i);
-                System.out.println("Name: " + r.getName() + " | cpm: " + r.getCpm() + " | Accuracy: " + r.getAccuracy());
+
+                System.out.printf("👤 Name: %-6s 🏆 CPM: %d\n", r.getName(), r.getCpm());
+                String[] accuracy = r.getAccuracy().split("\\.");
+                int intAccuracy = Integer.parseInt(accuracy[0]) / 10;
+
+                System.out.print("🎯 Accuracy: [");
+                for (int j = 0; j < 10; j++) {
+                    System.out.print(j < intAccuracy ? "█" : "░");
+                }
+                System.out.printf("] %s\n", r.getAccuracy());
+
+                if (i < Math.min(records.size(), 5) - 1) {
+                    System.out.print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+                }
             }
         }
     }
