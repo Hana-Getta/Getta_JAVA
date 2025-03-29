@@ -20,7 +20,7 @@ public class TypingPractice {
     }
 
 
-    public void run() {
+    public void run(String userName) {
         System.out.println("===================================");
         System.out.println("        🎮 연습할 언어 선택 🎮");
         System.out.println("===================================");
