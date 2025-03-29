@@ -59,8 +59,6 @@ public class Records {
                         break;
                 }
             }
-
-            System.out.println("JSON 데이터를 성공적으로 로드했습니다.");
         } catch (IOException e) {
             System.out.println("파일을 읽는 중 오류가 발생했습니다: " + e.getMessage());
         }
@@ -85,8 +83,9 @@ public class Records {
     }
 
     private void printTopRecords(String language, ArrayList<typingRecord> records) {
+        System.out.println("-------------------------------------------");
+
         System.out.println("[" + language + "]");
-        System.out.println("=====================================");
         if (records.size() == 0) {
             System.out.println("아직 기록이 없습니다.");
         } else {
@@ -95,6 +94,5 @@ public class Records {
                 System.out.println("Name: " + r.getName() + " | cpm: " + r.getCpm() + " | Accuracy: " + r.getAccuracy());
             }
         }
-        System.out.println("=====================================");
     }
 }

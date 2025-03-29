@@ -56,14 +56,14 @@ public class 실행 {
     }
 
     private static void printMenu() {
-        System.out.println("===================================");
-        System.out.println("        🎮 MENU 🎮");
-        System.out.println("===================================");
-        System.out.println("  1️⃣  Typing");
-        System.out.println("  2️⃣  Game");
-        System.out.println("  3️⃣  Record");
-        System.out.println("  4️⃣  Exit");
-        System.out.println("===================================");
+        System.out.println("===========================================");
+        System.out.println("               🎮 MENU 🎮");
+        System.out.println("===========================================");
+        System.out.println("              1️⃣  Typing");
+        System.out.println("              2️⃣  Game");
+        System.out.println("              3️⃣  Record");
+        System.out.println("              4️⃣  Exit");
+        System.out.println("===========================================");
     }
 
     // 사용자 입력을 받아 유효한 값인지 확인하는 함수
