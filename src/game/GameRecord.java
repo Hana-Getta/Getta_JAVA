@@ -49,10 +49,21 @@ public class GameRecord {
             e.printStackTrace();
         }
 
-        System.out.printf("%s 님의 기록: %d\n", userName, score);
+        System.out.println("════════════════════════════════════════");
+        System.out.printf("🎯 %s님의 기록: %d\n", userName, score);
         System.out.println("\uD83D\uDC51 Top 5 기록");
-        for (String record : records) {
-            System.out.println(record);
+        System.out.println("────────────────────────────────────────");
+        for (int i = 0; i < records.size(); i++) {
+            String medal = switch (i) {
+                case 0 -> "🥇";
+                case 1 -> "🥈";
+                case 2 -> "🥉";
+                default -> "\uD83C\uDF89";
+            };
+            System.out.printf("%s %-20s\n", medal, records.get(i));
         }
+
+        System.out.println("════════════════════════════════════════");
+
     }
 }
