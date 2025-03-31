@@ -27,15 +27,21 @@ public class GamePanel extends JPanel implements Runnable {
         this.game = game;
         setLayout(null);
         setBackground(Color.decode("#222222"));
+    }
 
-        Thread th = new Thread(this);
-        th.start();
+    // 게임을 시작하는 메서드
+    public void startGame() {
+        this.startTime = System.currentTimeMillis();
+        this.lastTime = startTime;
+        SwingUtilities.invokeLater(() -> {
+            addNewWord();
+            repaint();
+        });
+        new Thread(this).start();
     }
 
 
     public void run() {
-        startTime = System.currentTimeMillis();
-
         while (true) {
             try {
                 long currentTime = System.currentTimeMillis();

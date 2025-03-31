@@ -51,11 +51,7 @@ public class Game extends JFrame {
 
         setVisible(true);
 
-        SwingUtilities.invokeLater(() -> {
-            panel.addNewWord();
-            revalidate();
-            repaint();
-        });
+        panel.startGame();
     }
 
     public void updateScoreAndTime(int score, int remainingTime) {
