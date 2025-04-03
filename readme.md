@@ -1,6 +1,4 @@
-# 과제 실행 안내
-
-## 🖥️ Getta Studio Code 소개
+# 🖥️ Getta Studio Code 소개
 
 **Getta Studio Code**는 개발자를 위한 **전문 타자 연습 플랫폼**입니다.  
 프로그래밍 코드와 유사한 환경에서 타자 연습이 가능하도록,
