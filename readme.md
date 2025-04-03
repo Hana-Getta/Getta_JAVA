@@ -34,9 +34,18 @@ IntelliJ에서는 콘솔 출력이 정상적으로 표시되나, **Eclipse 환�
 
 ## 🎬 기능별 시연 영상
 
-|            코드 타이핑             |               산성비 게임               |              기록 게시판               |
-|:-----------------------------:|:----------------------------------:|:---------------------------------:|
-| ![타이핑 시연](./video/typing.gif) | ![산성비 게임 시연](./video/acidrain.gif) | ![기록 게시판 시연](./video/records.gif) |
+<table>
+  <tr>
+    <th width="33%">코드 타이핑 연습</th>
+    <th width="33%">산성비 게임 플레이</th>
+    <th width="33%">기록 게시판 기능</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="./video/typing.gif" width="100%"></td>
+    <td align="center"><img src="./video/acidrain.gif" width="100%"></td>
+    <td align="center"><img src="./video/records.gif" width="100%"></td>
+  </tr>
+</table>
 
 
 <br>
